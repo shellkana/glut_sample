@@ -34,6 +34,11 @@ float pot_a[3] = {0.0f, 0.0f, -9.8f};
 float world_size[4] = {4.9f, 4.9f, 4.9f, 1.0f};
 float world_origin[4] = {-2.45f, -2.45f, -2.45f, 1.0f};
 
+double camera_pos[3] = {0.0,0.0,0.0};
+double camera_center_pos[3] = {0.0,0.0,0.0};
+double camera_up[3] = {0.0,0.0,1.0};
+bool useCamera = true;
+
 extern void defineViewMatrix(double phi, double theta, unsigned int width, unsigned int height, double margin);
 
 void updatePot()
@@ -44,6 +49,15 @@ void updatePot()
         pot_pos[2] = -2.45;
         pot_v[2] = -0.8 * pot_v[2];
     }
+    double xy_dist = cos(theta * PI / 180.0);
+    double c = cos(phi * PI / 180.0);
+    double s = sin(phi * PI / 180.0);
+    camera_pos[0] = pot_pos[0] + xy_dist * c * 2;
+    camera_pos[1] = pot_pos[1] + xy_dist * s * 2;
+    camera_pos[2] = pot_pos[2] + sin(theta * PI / 180.0) * 2;
+    camera_center_pos[0] = pot_pos[0];
+    camera_center_pos[1] = pot_pos[1];
+    camera_center_pos[2] = pot_pos[2];
 }
 
 void display(void)
@@ -57,13 +71,27 @@ void display(void)
     }
     updatePot();
     GLfloat light_pos[4];
-    
-    defineViewMatrix(phi, theta, window_width, window_height, 0.0);
-    light_pos[0] = (float)eye[X];
-    light_pos[1] = (float)eye[Y];
-    light_pos[2] = (float)eye[Z];
-    light_pos[3] = 0.0f;
-    
+
+    if (useCamera) {
+        glMatrixMode(GL_PROJECTION);
+        glLoadIdentity();
+        gluPerspective(30.0, (double)window_width/ (double)window_height, 1.0, 100.0);
+        glViewport(0, 0, window_width, window_height);
+        glMatrixMode(GL_MODELVIEW);
+        glLoadIdentity();
+        gluLookAt(camera_pos[0], camera_pos[1], camera_pos[2], camera_center_pos[0], camera_center_pos[1], camera_center_pos[2], camera_up[0], camera_up[1], camera_up[2]);
+        light_pos[0] = -5;
+        light_pos[1] = -5;
+        light_pos[2] = 5;
+        light_pos[3] = 0.0f;
+    } else {
+        defineViewMatrix(phi, theta, window_width, window_height, 0.0);
+        light_pos[0] = (float)eye[X];
+        light_pos[1] = (float)eye[Y];
+        light_pos[2] = (float)eye[Z];
+        light_pos[3] = 0.0f;
+    }
+
     glLightfv(GL_LIGHT0, GL_POSITION, light_pos);
     
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
@@ -95,6 +123,9 @@ void keyboard(unsigned char key, int /*x*/, int /*y*/)
         case 'Q':
         case '\033':
             pot_v[2] = 10;
+            break;
+        case 'w':
+            useCamera=!useCamera;
             break;
     }
     glutPostRedisplay();
