@@ -112,7 +112,33 @@ bool Obj::load(const char *name, std::vector<vert> & out_vertices)
       fnorm[i][0] = dy1 * dz2 - dz1 * dy2;
       fnorm[i][1] = dz1 * dx2 - dx1 * dz2;
       fnorm[i][2] = dx1 * dy2 - dy1 * dx2;
-
+      double length = sqrt(fnorm[i][0] * fnorm[i][0] + fnorm[i][1] * fnorm[i][1] + fnorm[i][2] * fnorm[i][2]);
+      fnorm[i][0] /= length;
+      fnorm[i][1] /= length;
+      fnorm[i][2] /= length;
+        
+      struct vert a,b,c;
+        a.pos[0] = x0;
+        a.pos[1] = y0;
+        a.pos[2] = z0;
+        a.norm[0] = fnorm[i][0];
+        a.norm[1] = fnorm[i][1];
+        a.norm[2] = fnorm[i][2];
+        b.pos[0] = x0+dx1;
+        b.pos[1] = y0+dy1;
+        b.pos[2] = z0+dz1;
+        b.norm[0] = fnorm[i][0];
+        b.norm[1] = fnorm[i][1];
+        b.norm[2] = fnorm[i][2];
+        c.pos[0] = x0+dx2;
+        c.pos[1] = y0+dy2;
+        c.pos[2] = z0+dz2;
+        c.norm[0] = fnorm[i][0];
+        c.norm[1] = fnorm[i][1];
+        c.norm[2] = fnorm[i][2];
+        out_vertices.push_back(a);
+        out_vertices.push_back(b);
+        out_vertices.push_back(c);
       /* 基準の頂点 (p0) と, そこから２頂点に向かうベクトル (e1, e2) を VBO に格納する
       (*tri)[0][0] = x0;
       (*tri)[0][1] = y0;
