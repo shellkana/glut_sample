@@ -12,6 +12,7 @@
 		B4275CF619E6A4B800CBAD47 /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B4275CF519E6A4B800CBAD47 /* OpenGL.framework */; };
 		B4275CFA19E6B32F00CBAD47 /* Display.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B4275CF919E6B32F00CBAD47 /* Display.cpp */; };
 		B4275CFD19E6B37800CBAD47 /* BasicGeom.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B4275CFB19E6B37800CBAD47 /* BasicGeom.cpp */; };
+		B4A954A519F4F5DC0085AE6D /* Obj.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B4A954A319F4F5DC0085AE6D /* Obj.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -34,6 +35,8 @@
 		B4275CF819E6B29900CBAD47 /* BasicDef.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BasicDef.h; sourceTree = "<group>"; };
 		B4275CF919E6B32F00CBAD47 /* Display.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Display.cpp; sourceTree = "<group>"; };
 		B4275CFB19E6B37800CBAD47 /* BasicGeom.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = BasicGeom.cpp; sourceTree = "<group>"; };
+		B4A954A319F4F5DC0085AE6D /* Obj.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Obj.cpp; sourceTree = "<group>"; };
+		B4A954A419F4F5DC0085AE6D /* Obj.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Obj.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -70,6 +73,8 @@
 		B4275CEB19E6A28500CBAD47 /* sample */ = {
 			isa = PBXGroup;
 			children = (
+				B4A954A319F4F5DC0085AE6D /* Obj.cpp */,
+				B4A954A419F4F5DC0085AE6D /* Obj.h */,
 				B4275CEC19E6A28500CBAD47 /* main.cpp */,
 				B4275CFB19E6B37800CBAD47 /* BasicGeom.cpp */,
 				B4275CF919E6B32F00CBAD47 /* Display.cpp */,
@@ -137,6 +142,7 @@
 				B4275CFA19E6B32F00CBAD47 /* Display.cpp in Sources */,
 				B4275CED19E6A28500CBAD47 /* main.cpp in Sources */,
 				B4275CFD19E6B37800CBAD47 /* BasicGeom.cpp in Sources */,
+				B4A954A519F4F5DC0085AE6D /* Obj.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -252,6 +258,7 @@
 				B4275CF219E6A28500CBAD47 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
