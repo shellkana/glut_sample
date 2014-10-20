@@ -37,6 +37,7 @@
 		B4275CFB19E6B37800CBAD47 /* BasicGeom.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = BasicGeom.cpp; sourceTree = "<group>"; };
 		B4A954A319F4F5DC0085AE6D /* Obj.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Obj.cpp; sourceTree = "<group>"; };
 		B4A954A419F4F5DC0085AE6D /* Obj.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Obj.h; sourceTree = "<group>"; };
+		B4A954A619F4F7EA0085AE6D /* bunny_s.obj */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = bunny_s.obj; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -73,6 +74,7 @@
 		B4275CEB19E6A28500CBAD47 /* sample */ = {
 			isa = PBXGroup;
 			children = (
+				B4A954A619F4F7EA0085AE6D /* bunny_s.obj */,
 				B4A954A319F4F5DC0085AE6D /* Obj.cpp */,
 				B4A954A419F4F5DC0085AE6D /* Obj.h */,
 				B4275CEC19E6A28500CBAD47 /* main.cpp */,

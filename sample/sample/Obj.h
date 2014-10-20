@@ -4,15 +4,7 @@
 #ifndef OBJ_H
 #define OBJ_H
 
-#if defined(WIN32)
-#  include "glew.h"
-#  include <GL/gl.h>
-#elif defined(__APPLE__) || defined(MACOSX)
-#  include <OpenGL/gl.h>
-#else
-#  define GL_GLEXT_PROTOTYPES
-#  include <GL/gl.h>
-#endif
+#include <GLUT/glut.h>
 
 class Obj {
   /* シェーダオブジェクト */
@@ -24,7 +16,6 @@ class Obj {
   GLuint bufferObject;  // バッファオブジェクト名
   int faces;            // 三角形の数
 public:
-  Obj() { glGenBuffers(1, &bufferObject); }
   virtual ~Obj() { if (bufferObject > 0) glDeleteBuffers(1, &bufferObject), bufferObject = 0; }
   bool load(const char *name);
   void shader(GLuint program);

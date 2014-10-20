@@ -7,6 +7,13 @@
 double phi = PHI;
 double theta = THETA;
 
+/*
+ ** 形状データ
+ */
+#include "Obj.h"
+static const char objectData[] = "bunny_s.obj";
+static Obj *obj = 0;
+
 #define INIT_X_POS 128
 #define INIT_Y_POS 128
 #define INIT_WIDTH 512
@@ -175,6 +182,11 @@ void initGL(void)
     glEnable(GL_LIGHT0);
 }
 
+static void cleanup(void)
+{
+    delete obj;
+}
+
 int main(int argc, char** argv)
 {
     unsigned int i, j, k;
@@ -189,6 +201,10 @@ int main(int argc, char** argv)
         }
     }
     
+    obj = new Obj;
+    if (obj == 0) exit(1);
+    atexit(cleanup);
+    if (!obj->load(objectData)) exit(1);
 
     glutInit(&argc, argv);
     glutInitDisplayMode(GLUT_RGB | GLUT_DEPTH | GLUT_DOUBLE);

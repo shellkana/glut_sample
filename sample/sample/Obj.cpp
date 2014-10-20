@@ -93,12 +93,12 @@ bool Obj::load(const char *name)
       }
     }
 
-    /* 頂点バッファオブジェクトをプログラムのメモリにマップ */
+    /* 頂点バッファオブジェクトをプログラムのメモリにマップ
     glBindBuffer(GL_ARRAY_BUFFER, bufferObject);
     glBufferData(GL_ARRAY_BUFFER, sizeof (Tri) * faces * 2, 0, GL_STATIC_DRAW);
-    Tri *tri = (Tri *)glMapBuffer(GL_ARRAY_BUFFER, GL_WRITE_ONLY);
+    Tri *tri = (Tri *)glMapBuffer(GL_ARRAY_BUFFER, GL_WRITE_ONLY);*/
 
-    /* 面の法線ベクトルを算出する */
+    /* 面の法線ベクトルを算出する*/
     for (int i = 0; i < f; ++i) {
       float x0 = vert[face[i][0]][0];
       float y0 = vert[face[i][0]][1];
@@ -114,7 +114,7 @@ bool Obj::load(const char *name)
       fnorm[i][1] = dz1 * dx2 - dx1 * dz2;
       fnorm[i][2] = dx1 * dy2 - dy1 * dx2;
 
-      /* 基準の頂点 (p0) と, そこから２頂点に向かうベクトル (e1, e2) を VBO に格納する */
+      /* 基準の頂点 (p0) と, そこから２頂点に向かうベクトル (e1, e2) を VBO に格納する
       (*tri)[0][0] = x0;
       (*tri)[0][1] = y0;
       (*tri)[0][2] = z0;
@@ -127,10 +127,10 @@ bool Obj::load(const char *name)
       (*tri)[2][1] = dy2;
       (*tri)[2][2] = dz2;
 
-      ++tri;
+      ++tri;*/
     }
 
-    /* 頂点の仮想法線ベクトルを算出する */
+    /* 頂点の仮想法線ベクトルを算出する
     for (int i = 0; i < v; ++i) {
       norm[i][0] = norm[i][1] = norm[i][2] = 0.0;
     }
@@ -149,7 +149,7 @@ bool Obj::load(const char *name)
       norm[face[i][2]][2] += fnorm[i][2];
     }
 
-    /* 頂点の仮想法線ベクトルを正規化する */
+    /* 頂点の仮想法線ベクトルを正規化する
     for (int i = 0; i < v; ++i) {
       float a = sqrt(norm[i][0] * norm[i][0]
                    + norm[i][1] * norm[i][1]
@@ -162,7 +162,7 @@ bool Obj::load(const char *name)
       }
     }
 
-    /* 頂点の法線ベクトル (v0, v1, v2) を VBO に格納する */
+    /* 頂点の法線ベクトル (v0, v1, v2) を VBO に格納する
     for (int i = 0; i < f; ++i) {
       (*tri)[0][0] = norm[face[i][0]][0];
       (*tri)[0][1] = norm[face[i][0]][1];
@@ -179,9 +179,10 @@ bool Obj::load(const char *name)
       ++tri;
     }
 
-    /* 頂点バッファオブジェクトのメモリをプログラムのメモリ空間から切り離す */
+    /* 頂点バッファオブジェクトのメモリをプログラムのメモリ空間から切り離す
     glUnmapBuffer(GL_ARRAY_BUFFER);
-    glBindBuffer(GL_ARRAY_BUFFER, 0);
+    glBindBuffer(GL_ARRAY_BUFFER, 0);*/
+    
   }
 
   if (vert != 0) delete[] vert;
