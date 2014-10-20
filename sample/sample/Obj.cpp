@@ -112,6 +112,7 @@ bool Obj::load(const char *name, std::vector<vert> & out_vertices)
       fnorm[i][0] = dy1 * dz2 - dz1 * dy2;
       fnorm[i][1] = dz1 * dx2 - dx1 * dz2;
       fnorm[i][2] = dx1 * dy2 - dy1 * dx2;
+
       double length = sqrt(fnorm[i][0] * fnorm[i][0] + fnorm[i][1] * fnorm[i][1] + fnorm[i][2] * fnorm[i][2]);
       fnorm[i][0] /= length;
       fnorm[i][1] /= length;

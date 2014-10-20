@@ -114,13 +114,14 @@ void display(void)
     glRotatef(90, 1, 0, 0);
     glutSolidTeapot(0.1);
     glPopMatrix();
-    glDisable(GL_LIGHTING);
 
     glBegin(GL_TRIANGLES);
-    glVertex3f(0 , 0, 0);
-    glVertex3f(-1 , 0.9, 0);
-    glVertex3f(1 , 0.9, 0);
+    for (std::vector<vert>::iterator it = vertices.begin(); it != vertices.end(); ++it) {
+        glNormal3d(it->norm[0],it->norm[1],it->norm[2]);
+        glVertex3d(it->pos[0]/100.0,it->pos[1]/100.0,it->pos[2]/100.0);
+    }
     glEnd();
+    glDisable(GL_LIGHTING);
     
     glutSwapBuffers();
 }
