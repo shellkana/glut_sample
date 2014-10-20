@@ -14,3 +14,8 @@
 #define PI 3.141592653589793
 
 #define MAX_NUM_POINTS 8
+
+struct vertice{
+    double pos[3];
+    double norm[3];
+};

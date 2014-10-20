@@ -16,6 +16,8 @@
 
 #include "Obj.h"
 
+#include "BasicDef.h"
+
 typedef GLfloat Vec[3];  // ベクトルの型
 typedef GLuint Idx[3];   // 三角形の頂点インデックスの型
 typedef Vec Tri[3];      // 頂点バッファオブジェクトのデータ構造
