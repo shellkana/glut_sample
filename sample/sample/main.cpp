@@ -107,6 +107,12 @@ void display(void)
     glPopMatrix();
     glDisable(GL_LIGHTING);
 
+    glBegin(GL_TRIANGLES);
+    glVertex3f(0 , 0, 0);
+    glVertex3f(-1 , 0.9, 0);
+    glVertex3f(1 , 0.9, 0);
+    glEnd();
+    
     glutSwapBuffers();
 }
 
