@@ -15,7 +15,7 @@
 
 #define MAX_NUM_POINTS 8
 
-struct vertice{
+struct vert{
     double pos[3];
     double norm[3];
 };

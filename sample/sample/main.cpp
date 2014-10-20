@@ -1,7 +1,7 @@
 #include <GLUT/glut.h>
 #include <math.h>
-#include "BasicDef.h"
 #include <iostream>
+#include <vector>
 #define PHI 30.0
 #define THETA 30.0
 double phi = PHI;
@@ -45,6 +45,8 @@ double camera_pos[3] = {0.0,0.0,0.0};
 double camera_center_pos[3] = {0.0,0.0,0.0};
 double camera_up[3] = {0.0,0.0,1.0};
 bool useCamera = true;
+
+std::vector<vert> vertices;
 
 extern void defineViewMatrix(double phi, double theta, unsigned int width, unsigned int height, double margin);
 
@@ -204,7 +206,7 @@ int main(int argc, char** argv)
     obj = new Obj;
     if (obj == 0) exit(1);
     atexit(cleanup);
-    if (!obj->load(objectData)) exit(1);
+    if (!obj->load(objectData, vertices)) exit(1);
 
     glutInit(&argc, argv);
     glutInitDisplayMode(GLUT_RGB | GLUT_DEPTH | GLUT_DOUBLE);

@@ -5,7 +5,8 @@
 #define OBJ_H
 
 #include <GLUT/glut.h>
-
+#include <vector>
+#include "BasicDef.h"
 class Obj {
   /* シェーダオブジェクト */
   GLuint shaderObject;  // シェーダオブジェクト名
@@ -16,8 +17,9 @@ class Obj {
   GLuint bufferObject;  // バッファオブジェクト名
   int faces;            // 三角形の数
 public:
+    Obj(){};
   virtual ~Obj() { if (bufferObject > 0) glDeleteBuffers(1, &bufferObject), bufferObject = 0; }
-  bool load(const char *name);
+  bool load(const char *name, std::vector<vert> & out_vertices);
   void shader(GLuint program);
   void setup() const;
   void draw(const float *screen, const float *origin, const float *direction) const;
